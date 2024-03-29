@@ -1,15 +1,16 @@
 an = "ananam"
+
+def is_palindrome(s):
+    return s == s[::-1]
 def palindromeIndex(s):
     # Write your code here
-    pal = s[::-1]
-    print(f"palindrome: {pal} and string: {s}")
-    n = len(s)
-    if pal == s:
-        print(-1)
-    elif pal[1:] == s[1:]:
-        print(f"palindrome: {pal[0]} and string: {s[0]}")
-        print(n-1)
-    elif pal[0:n-1] == s[0:n-1]:
-        print(f"palindrome: {pal[n-1]} and string: {s[n-1]}")
-        print(0)
-palindromeIndex(an)
+    if is_palindrome(s):
+        return -1
+    for i in range(len(s)//2):
+        if s[i:] != s[len(s) - 1 - i]:
+            if is_palindrome(s[i:len(s)-1-i]):
+                return (len(s)-1-i)
+            elif is_palindrome(s[i+1:len(s)-i]):
+                return i
+    return -1
+print(palindromeIndex(an))
