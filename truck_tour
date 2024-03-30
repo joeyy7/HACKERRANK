@@ -1,0 +1,12 @@
+def thestart(petrolpumps):
+    cons,start = 0,0
+    for i in range(len(petrolpumps)):
+        petrol,distance = petrolpumps[i]
+        cons += petrol - distance
+        if cons < 0:
+            start = i+1
+            cons = 0
+    print(start)
+
+petrolpumps = [[1,5],[10,3],[4,3]]
+thestart(petrolpumps)
